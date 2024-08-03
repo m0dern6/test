@@ -16,10 +16,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Add any build steps if necessary
-      - run: flutter build web
+      # Install Flutter
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.3' # Use the version of Flutter you need
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      # Get Flutter dependencies
+      - name: Flutter Pub Get
+        run: flutter pub get
+
+      # Build the Flutter web app
+      - name: Build Flutter Web
+        run: flutter build web
+
+      # Deploy to Firebase Hosting
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_FE6BD }}
