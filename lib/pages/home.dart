@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
               Row(
                 children: [
                   Text(
-                    'Hello Hello',
+                    'Yo Yo',
                     style: TextStyle(
                       fontSize: _fontSize,
                       fontWeight: FontWeight.bold,
