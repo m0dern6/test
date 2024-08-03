@@ -14,25 +14,11 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      # Install Flutter
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.22.3' # Use the version of Flutter you need
-
-      # Get Flutter dependencies
-      - name: Flutter Pub Get
-        run: flutter pub get
-
-      # Build the Flutter web app
-      - name: Build Flutter Web
-        run: flutter build web
-
-      # Deploy to Firebase Hosting
-      - name: Deploy to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: actions/checkout@v2
+      - run: sudo snap install flutter --classic
+      - run: flutter config --enable-web
+      - run: flutter build web --release
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_FE6BD }}
