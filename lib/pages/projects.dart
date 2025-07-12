@@ -162,7 +162,7 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
                   child: Center(
                     child: Text(
                       '${categories[index]} Projects',
-                      textAlign: TextAlign.cente,
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.dmSans(
                         fontSize: isMobile ? 12 : 16,
                         fontWeight: FontWeight.w600,
