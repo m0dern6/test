@@ -55,6 +55,7 @@ class _AboutMeState extends State<AboutMe> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       padding: EdgeInsets.symmetric(
         horizontal: Responsive.isMobile(context) ? 20 : 40,
         vertical: 40,
@@ -236,8 +237,8 @@ class _AboutMeState extends State<AboutMe> with TickerProviderStateMixin {
   Widget _buildStatsRow() {
     final isMobile = Responsive.isMobile(context);
     final stats = [
-      {'number': '1', 'label': 'Year Experience'},
-      {'number': '10+', 'label': 'Projects Completed'},
+      {'number': '3+', 'label': 'Months Experience'},
+      {'number': '5+', 'label': 'Projects Completed'},
       {'number': '100%', 'label': 'Client Satisfaction'},
     ];
 
@@ -295,8 +296,8 @@ class _AboutMeState extends State<AboutMe> with TickerProviderStateMixin {
       {'name': 'Flutter Development', 'level': 0.9},
       {'name': 'Dart Programming', 'level': 0.85},
       {'name': 'Firebase Integration', 'level': 0.8},
-      {'name': 'API Integration', 'level': 0.9},
-      {'name': 'UI/UX Design', 'level': 0.9},
+      {'name': 'API Integration', 'level': 0.75},
+      {'name': 'UI/UX Design', 'level': 0.7},
     ];
 
     return GlassCard(

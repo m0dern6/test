@@ -81,6 +81,7 @@ class _ContactsState extends State<Contacts> with TickerProviderStateMixin {
     final isTablet = Responsive.isTablet(context);
 
     return Container(
+      height: MediaQuery.of(context).size.height,
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 20 : 40,
         vertical: 40,
@@ -93,11 +94,13 @@ class _ContactsState extends State<Contacts> with TickerProviderStateMixin {
           const Gap(60),
 
           // Content
-          isMobile
-              ? _buildMobileLayout()
-              : isTablet
-                  ? _buildTabletLayout()
-                  : _buildDesktopLayout(),
+          Expanded(
+            child: isMobile
+                ? _buildMobileLayout()
+                : isTablet
+                    ? _buildTabletLayout()
+                    : _buildDesktopLayout(),
+          ),
         ],
       ),
     );

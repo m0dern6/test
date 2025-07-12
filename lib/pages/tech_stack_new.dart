@@ -70,6 +70,7 @@ class _TechStackState extends State<TechStack> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       padding: EdgeInsets.symmetric(
         horizontal: Responsive.isMobile(context) ? 20 : 40,
         vertical: 40,
@@ -159,33 +160,26 @@ class _TechStackState extends State<TechStack> with TickerProviderStateMixin {
     final isTablet = Responsive.isTablet(context);
 
     int crossAxisCount;
-    double gridHeight;
     if (isMobile) {
       crossAxisCount = 2;
-      gridHeight = 400;
     } else if (isTablet) {
       crossAxisCount = 3;
-      gridHeight = 350;
     } else {
       crossAxisCount = 4;
-      gridHeight = 300;
     }
 
-    return Container(
-      height: gridHeight,
-      child: GridView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
-          childAspectRatio: 1.0,
-        ),
-        itemCount: skills.length,
-        itemBuilder: (context, index) {
-          return _buildTechCard(skills[index], index);
-        },
+    return GridView.builder(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
+        childAspectRatio: 1.0,
       ),
+      itemCount: skills.length,
+      itemBuilder: (context, index) {
+        return _buildTechCard(skills[index], index);
+      },
     );
   }
 
